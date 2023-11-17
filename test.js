@@ -1,3 +1,5 @@
+console.log("HELLO WORLD BABY!")
+
 const body = document.getElementsByTagName('body')[0];
 
 const amogus_div = document.createElement('div');
