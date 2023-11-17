@@ -30,3 +30,5 @@ wss.on('connection', function connection(ws) {
 
   ws.send('Hello! Message From Server!!');
 });
+
+server.listen(6969);
