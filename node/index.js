@@ -1,6 +1,6 @@
 const WebSocket = require('ws');
 
-const wss = new WebSocket.Server({ port: 8080 });
+const wss = new WebSocket.Server({ port: 6969 });
 
 const clients = [];
 
@@ -15,7 +15,7 @@ wss.on('connection', function connection(ws) {
   ws.on('close', function close() {
     const index = clients.indexOf(ws);
     if (index !== -1) {
-      clients.splice(index, 1); // Remove the client from the array
+      clients.splice(index, 1);
     }
 
     console.log('A client disconnected. #clients:', clients.length);

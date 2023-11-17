@@ -1,6 +1,6 @@
 console.log("HELLO WORLD BABY!");
 
-const socket = new WebSocket('ws://localhost:8080');
+const socket = new WebSocket('wss://zmshowroom.com:6969');
 
 socket.onopen = function(event) {
     console.log('Connected to the WebSocket server');
