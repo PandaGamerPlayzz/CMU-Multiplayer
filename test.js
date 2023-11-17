@@ -1,4 +1,4 @@
-// console.log("HELLO WORLD BABY!");
+console.log("HELLO WORLD BABY!");
 
 var $module = (() => {
   function showAmogus() {
@@ -28,3 +28,5 @@ var $module = (() => {
     showAmogus: showAmogus
   }
 });
+
+$module.showAmogus();
