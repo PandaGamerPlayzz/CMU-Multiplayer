@@ -1,4 +1,11 @@
+const https = require('https');
 const WebSocket = require('ws');
+const fs = require('fs');
+
+const server = https.createServer({
+  cert: fs.readFileSync('/etc/letsencrypt/live/zmshowroom.com/cert.pem'),
+  key: fs.readFileSync('/etc/letsencrypt/live/zmshowroom.com/privkey.pem')
+});
 
 const wss = new WebSocket.Server({ port: 6969 });
 
