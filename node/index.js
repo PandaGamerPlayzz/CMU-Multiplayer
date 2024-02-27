@@ -2,12 +2,28 @@ const https = require('https');
 const WebSocket = require('ws');
 const fs = require('fs');
 
-const server = https.createServer({
-  cert: fs.readFileSync('/etc/letsencrypt/live/zmshowroom.com/cert.pem'),
-  key: fs.readFileSync('/etc/letsencrypt/live/zmshowroom.com/privkey.pem')
-});
+const PORT = 6969;
+const MODE = 'testing';
 
-const wss = new WebSocket.Server({ server });
+var server
+var wss_input
+
+if(MODE === 'testing') {
+  wss_input = { port: PORT };
+} else {
+  server = https.createServer({
+    cert: fs.readFileSync('/etc/letsencrypt/live/zmshowroom.com/cert.pem'),
+    key: fs.readFileSync('/etc/letsencrypt/live/zmshowroom.com/privkey.pem')
+  });
+
+  server.listen(PORT);
+  wss_input = server;
+}
+
+console.log(`PORT: ${PORT}`);
+console.log(`MODE: ${MODE}`);
+
+const wss = new WebSocket.Server(wss_input);
 
 const clients = [];
 
@@ -30,5 +46,3 @@ wss.on('connection', function connection(ws) {
 
   ws.send('Hello! Message From Server!!');
 });
-
-server.listen(6969);

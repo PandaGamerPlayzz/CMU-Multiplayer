@@ -1,6 +1,10 @@
 console.log("HELLO WORLD BABY!");
 
-const socket = new WebSocket('wss://zmshowroom.com:6969');
+const PORT = 6969;
+const MODE = 'testing';
+const DOMAIN = MODE === 'testing' ? 'localhost' : 'zmshowroom.com'
+
+const socket = new WebSocket(`${DOMAIN === 'localhost' ? 'ws' : 'wss'}://${DOMAIN}:${PORT}`);
 
 socket.onopen = function(event) {
     console.log('Connected to the WebSocket server');
